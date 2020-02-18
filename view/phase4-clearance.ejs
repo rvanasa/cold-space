@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Security Checkpoint</title>
+
+    <% include partial/header.ejs %>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/TypewriterJS/1.0.0/typewriter.min.js"
+            integrity="sha256-0GG30XmRuHKTD54lbTLEd01reloWjlnefU09UzmFpzc="
+            crossorigin="anonymous"></script>
+
+    <script>
+        $(() => {
+            let typewriter = new Typewriter($('.typewriter')[0], {
+                typingSpeed: 50,
+                deleteSpeed: 10,
+            });
+            typewriter
+                .typeString('CLEARANCE REQUIRED.')
+                .pauseFor(1000)
+                .deleteAll()
+                .typeString('PRESENT IDENTIFICATION.')
+                .start();
+
+            let $response = $('.response');
+            $response.hide();
+            typewriter._addToEventQue(() => {
+                $response.show();
+                $('body').css({background: 'black'});
+            });
+
+            let attempts = 10;
+            let $countdown = $('.countdown');
+            window.tryOverride = () => {
+                if(!attempts) {
+                    window.location = 'phase5.html';
+                }
+                $countdown.text(attempts || '').removeClass('countdown-animate');
+                setTimeout(() => $countdown.addClass('countdown-animate'));
+                if(attempts) {
+                    attempts--;
+                }
+            };
+        });
+    </script>
+
+    <style>
+        body {
+            font-weight: 200;
+            background: #2B2836;
+            transition: .2s ease-out;
+        }
+
+        .terminal {
+            z-index: 1;
+            position: absolute;
+            top: 20%;
+            left: 2em;
+            right: 2em;
+            padding: 1em;
+            font-size: 4em;
+        }
+
+        .typewriter {
+            white-space: pre;
+        }
+
+        .btn {
+            letter-spacing: 2px;
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
+        }
+
+        .countdown {
+            letter-spacing: 0;
+        }
+
+        .countdown-animate {
+            animation: countdown .2s ease-out;
+        }
+
+        @keyframes countdown {
+            from {
+                transform: scale(1.2);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="terminal">
+        <div class="typewriter text-center text-warning"></div>
+        <div class="response text-center">
+            <hr>
+            <div class="btn btn-outline-danger p-3" onclick="tryOverride()">OVERRIDE</div>
+            <p class="h1 countdown"></p>
+        </div>
+    </div>
+</body>
+</html>

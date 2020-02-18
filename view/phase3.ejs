@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Phase III</title>
+
+    <% include partial/header.ejs %>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/TypewriterJS/1.0.0/typewriter.min.js"
+            integrity="sha256-0GG30XmRuHKTD54lbTLEd01reloWjlnefU09UzmFpzc="
+            crossorigin="anonymous"></script>
+
+    <script>
+        $(() => {
+            let typewriter = new Typewriter($('.typewriter')[0], {
+                typingSpeed: 50,
+                deleteSpeed: 10,
+            });
+            typewriter
+                .typeString('They came from a place\n that we cannot find.')
+                .pauseFor(500)
+                .deleteChars(20)
+                .typeString('where life is an echo.')
+                .pauseFor(1000)
+                .deleteAll()
+                .start();
+
+            let $next = $('.next');
+            $next.hide();
+            typewriter._addToEventQue(() => {
+                $next.show();
+                $('body').css({background: '#000'});
+            });
+        });
+    </script>
+
+    <style>
+        body {
+            background: #221511;
+        }
+
+        .terminal {
+            z-index: 1;
+            position: absolute;
+            top: 30%;
+            left: 2em;
+            right: 2em;
+            padding: 1em;
+            font-size: 4em;
+        }
+
+        .typewriter {
+            white-space: pre;
+        }
+
+        .next {
+            z-index: 5;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="terminal">
+        <div class="typewriter text-center text-danger"></div>
+    </div>
+    <div class="next" onclick="window.location='phase4.html'"></div>
+</body>
+</html>

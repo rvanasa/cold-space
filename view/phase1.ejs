@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Phase I</title>
+
+    <% include partial/header.ejs %>
+
+    <!-- Preload images for future use -->
+    <% include partial/preload.ejs %>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/TypewriterJS/1.0.0/typewriter.min.js"
+            integrity="sha256-0GG30XmRuHKTD54lbTLEd01reloWjlnefU09UzmFpzc="
+            crossorigin="anonymous"></script>
+
+    <script>
+        $(() => {
+            let typewriter = new Typewriter($('.typewriter')[0], {});
+            typewriter
+                .typeString('What is left?')
+                .pauseFor(1000)
+                .deleteAll()
+                .typeString('Was it all for nothing?')
+                .pauseFor(1000)
+                .deleteChars(1)
+                .pauseFor(100)
+                .typeString(', and if nothing is part of everything, did they take that too?')
+                .pauseFor(5000)
+                .changeDeleteSpeed(5)
+                .deleteAll()
+                .start();
+        });
+    </script>
+
+    <style>
+        body {
+            overflow: hidden;
+        }
+
+        .background {
+            background: url("img/phase1.jpg");
+            background-size: cover;
+            animation: fade-in 30s ease-in-out;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+        }
+
+        .terminal {
+            position: absolute;
+            top: 2em;
+            right: 4em;
+            padding: 1em;
+            background: rgba(0, 0, 0, .2);
+        }
+
+        .next {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 30%;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="terminal">
+        <div class="typewriter"></div>
+    </div>
+    <div class="next" onclick="window.location='phase2.html'"></div>
+</body>
+</html>

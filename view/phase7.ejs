@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Phase VII</title>
+
+    <% include partial/header.ejs %>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/TypewriterJS/1.0.0/typewriter.min.js"
+            integrity="sha256-0GG30XmRuHKTD54lbTLEd01reloWjlnefU09UzmFpzc="
+            crossorigin="anonymous"></script>
+
+    <script>
+        $(() => {
+            let $typewriter = $('.news .typewriter');
+            let text = $typewriter.text();
+            let typewriter = new Typewriter($typewriter[0], {
+                typingSpeed: 8,
+                deleteSpeed: 1,
+            });
+            typewriter
+                .typeString(text)
+                .start();
+
+            $('.writer-details').hide();
+
+            window.clickWriter = () => {
+                window.clickWriter = () => {};
+                $typewriter.hide();
+                $('.writer-details').show();
+                let typewriter = new Typewriter($('.writer-details .typewriter')[0], {
+                    typingSpeed: 35,
+                    deleteSpeed: 100,
+                });
+                typewriter
+                    .deleteAll()
+                    .typeString('Long time, no see!')
+                    .pauseFor(500)
+                    .typeString(' I heard you\'ve got a killer')
+                    .deleteChars(6)
+                    .typeString('kickin\' story for me today.')
+                    .start();
+
+                let $response = $('.response');
+                $response.hide();
+                typewriter._addToEventQue(() => {
+                    $response.show();
+                    $response.css({
+                        animation: 'fade-in 1.5s ease-in-out',
+                    })
+                });
+            };
+        });
+    </script>
+
+    <style>
+        body {
+            font-family: Kanit, sans-serif;
+            overflow: hidden;
+        }
+
+        .title {
+            letter-spacing: 2px;
+            font-weight: 200;
+        }
+
+        /* Shimmering effect from https://codepen.io/kianlavi/pen/BzbRZw */
+
+        .shine {
+            background: rgba(0, 0, 0, 0) linear-gradient(to right, rgba(0, 0, 0, 0) 0%, #111522 20%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 100%) no-repeat;
+            background-size: 800px 104px;
+            display: inline-block;
+            position: relative;
+
+            animation-duration: 3s;
+            animation-fill-mode: both;
+            animation-iteration-count: infinite;
+            animation-name: placeholderShimmer;
+            animation-timing-function: linear;
+        }
+
+        .box {
+            height: 104px;
+            width: 100px;
+        }
+
+        .shine-group {
+            display: inline-flex;
+            flex-direction: column;
+            margin-left: 25px;
+            margin-top: 15px;
+            vertical-align: top;
+        }
+
+        .lines {
+            height: 10px;
+            margin-top: 10px;
+            width: 200px;
+        }
+
+        .photo {
+            display: block !important;
+            width: 325px;
+            height: 100px;
+            margin-top: 15px;
+        }
+
+        @keyframes placeholderShimmer {
+            0% {
+                background-position: -468px 0;
+            }
+
+            100% {
+                background-position: 468px 0;
+            }
+        }
+
+        .planet {
+            width: 10em;
+            height: 10em;
+            border-radius: 50%;
+            box-shadow: #F5F5F5 0 0 1em;
+        }
+
+        @keyframes fade-in {
+            from {
+                transform: scale(.9);
+                transform-origin: center;
+                opacity: 0;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <div class="box shine"></div>
+                <div class="shine-group">
+                    <div class="lines shine"></div>
+                    <div class="lines shine"></div>
+                    <div class="lines shine"></div>
+                </div>
+                <div class="photo shine"></div>
+                <div class="photo shine"></div>
+                <br>
+                <div class="box shine"></div>
+                <div class="shine-group">
+                    <div class="lines shine"></div>
+                    <div class="lines shine"></div>
+                    <div class="lines shine"></div>
+                </div>
+                <div class="photo shine"></div>
+            </div>
+            <div class="col-8">
+                <div class="card shine">
+                    <div class="card-body">
+                        <h1 class="title">BREAKING NEWS</h1>
+                        <h5 class="text-warning" onclick="clickWriter()">Nevin Clamsey / 2201.09.14</h5>
+                        <br>
+                        <div class="news text-secondary">
+                            <div class="typewriter" lang="zh-hans">
+                                <%= require('text/chinese.txt') %>
+                            </div>
+                        </div>
+                        <div class="writer-details text-success">
+                            <div class="typewriter"></div>
+                            <div class="response pt-5">
+                                <div class="planet mx-auto mt-2" onclick="window.location='phase7-story.html'"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

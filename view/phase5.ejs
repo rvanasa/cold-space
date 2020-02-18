@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Phase V</title>
+
+    <% include partial/header.ejs %>
+
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"
+            integrity="sha256-98Q574VkbV+PkxXCKSgL6jVq9mrVbS7uCdA+vt0sLS8="
+            crossorigin="anonymous"></script>
+
+    <script>
+        $(() => {
+            // Adapted from https://codepen.io/juliangarnier/pen/XvjWvx
+            const staggerVisualizerEl = document.querySelector('.stagger-visualizer');
+            const fragment = document.createDocumentFragment();
+            const grid = [17, 15];
+            const col = grid[0];
+            const row = grid[1];
+            const numberOfElements = col * row;
+
+            for(let i = 0; i < numberOfElements; i++) {
+                const div = document.createElement('div');
+                div.classList.add('stagger-item');
+                fragment.appendChild(div);
+            }
+
+            staggerVisualizerEl.appendChild(fragment);
+
+            const staggersAnimation = anime.timeline({
+                targets: '.stagger-visualizer div',
+                easing: 'easeInOutSine',
+                // delay: anime.stagger(50),
+                // loop: true,
+                autoplay: false,
+                complete() {
+                    window.location = 'phase5-scan.html';
+                }
+            })
+                .add({
+                    scaleY: .9,
+                    delay: anime.stagger(.2, {grid, from: 'center', easing: 'easeInQuad'}),
+                })
+                .add({
+                    scale: .9,
+                    delay: anime.stagger(.2, {grid, from: 'center', easing: 'easeOutQuad'}),
+                })
+                .add({
+                    translateX: () => anime.random(-1, 1) * 30,
+                    translateY: () => anime.random(-1, 1) * 20 - 50,
+                    rotate: () => Math.sin(anime.random(-1, 1)) * 300,
+                    scale: 0,
+                    easing: 'easeOutSine',
+                    delay: anime.stagger(10, {from: 'last', easing: 'easeOutSine'}),
+                })
+                .add({
+                    translateX: 0,
+                    translateY: 0,
+                    scale: .3,
+                    scaleX: 6,
+                    rotate: 180,
+                    duration: 800,
+                    delay: anime.stagger(30, {grid: grid, from: 'center', easing: 'easeInSine'}),
+                });
+
+            window.clickAnimation = () => {
+                if(staggersAnimation.completed) {
+                    window.location = 'phase6.html';
+                    return;
+                }
+                staggersAnimation.play();
+            };
+        });
+    </script>
+
+    <style>
+
+        .stagger-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100vh;
+            /*background-color: #FF4B4B;*/
+        }
+
+        .stagger-visualizer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            width: 15rem;
+            height: 17rem;
+        }
+
+        .stagger-visualizer div {
+            /*position: absolute;*/
+            width: 1rem;
+            height: 1rem;
+            border: 1px solid #FFF;
+            background-color: #FFF;
+        }
+
+        .stagger-item {
+            box-shadow: #F5F5F5 0 0 2em;
+        }
+
+        body {
+            background: #2B2836;
+            background: linear-gradient(90deg, rgba(43, 40, 54, 1) 0%, rgba(0, 0, 0, 1) 50%, rgba(43, 40, 54, 1) 100%);
+        }
+
+        img {
+            animation: fade-in 5s ease-out;
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+        }
+
+        h2 {
+            letter-spacing: 2px;
+        }
+
+        p {
+            font-family: "Kanit", sans-serif;
+            font-size: 16px;
+            font-weight: 200;
+        }
+
+        code {
+            color: #444F77;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="img/phase5.jpg" alt="" class="d-block w-100">
+        <hr>
+        <div class="mx-auto w-75">
+            <h2 class="text-white">Operation Cold Space</h2>
+            <hr>
+            <p>
+                On the afternoon of 2127.12.09, the antiquated <span class="text-white">Grace Hopper Telescope</span>
+                identified a Terrestrial Planet of Interest (TPOI) in the Pentalon star system. Suspiciously similar to
+                the movie <i>Interstellar</i>, we have sent several manned missions to <code>REDACTED</code> by
+                utilizing the anomaly near <code>REDACTED</code> in conjunction with modern cloning-training methods.
+            </p>
+            <hr>
+            <p>
+                Initially, we received a fantastic stream of high-quality images of obvious extraterrestrial life on
+                almost every moon and potentially <code>REDACTED</code> itself. One of the moons, namely Gorgorath, has
+                <span class="text-white">nearly human-breathable air</span> and was thus the target of our first
+                mission. Unfortunately, not only did we lose contact with the mission team, it appears that these
+                extraterrestrials have since performed several preliminary injections (SCP-005X) into our Solar
+                System.
+            </p>
+            <hr>
+            <p>
+                Due to the increased availability of consumer Deep Space Object Detection (DSOD) devices, we have
+                unfortunately removed a number of hobbyists from the general public in order to slow down the
+                permeation of this knowledge. We expect that the public will be aware of extraterrestrial presence at
+                the next occurrence of an <code>REDACTED</code> visitation.
+            </p>
+            <hr>
+            <p>
+                <span class="text-white">We propose a preliminary strike</span> against the <code>REDACTED</code> before
+                it is too late. UNASA will collaborate with SpaceX and ENSPX in order to
+                <span class="text-white">instill a negative public opinion</span> of these extraterrestrials via
+                emergency protocols described in <code>REDACTED</code>. This simultaneously provides an opportunity to
+                unite the Twin Powers against a common enemy during this time of mounting tension and instability.
+            </p>
+            <hr>
+        </div>
+        <div class="text-center" style="position:relative; top: 40vh">
+            <h2>time flies</h2>
+        </div>
+        <div class="stagger-container" onclick="clickAnimation()">
+            <div class="stagger-visualizer"></div>
+        </div>
+    </div>
+</body>
+</html>

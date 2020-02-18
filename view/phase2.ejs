@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Phase II</title>
+
+    <% include partial/header.ejs %>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/TypewriterJS/1.0.0/typewriter.min.js"
+            integrity="sha256-0GG30XmRuHKTD54lbTLEd01reloWjlnefU09UzmFpzc="
+            crossorigin="anonymous"></script>
+
+    <script>
+        $(() => {
+            let typewriter = new Typewriter($('.typewriter')[0], {
+                typingSpeed: 50,
+            });
+            typewriter
+                .typeString('Life really isn\'t as bad as you\'d expect.')
+                .pauseFor(200)
+                .typeString(' They protect us in exchange for our land and resources.')
+                .pauseFor(500)
+                .typeString(' But they\'re always watching, always hoping to catch us off guard.')
+                .start();
+
+        });
+    </script>
+
+    <style>
+
+        .background {
+            background-size: cover;
+            background-position: center;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .before {
+            background-image: url("img/phase2-before.jpg");
+            animation: fade-in 2s ease-out;
+        }
+
+        .after {
+            background-image: url("img/phase2-after.jpg");
+            animation: fade-in 10s ease-in-out;
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+        }
+
+        .terminal {
+            z-index: 1;
+            position: absolute;
+            top: 2em;
+            left: 4em;
+            width: 35em;
+            padding: 1em;
+            background: rgba(0,0,0,.2);
+        }
+
+        .next {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 15%;
+        }
+    </style>
+</head>
+<body>
+    <div class="terminal">
+        <div class="typewriter"></div>
+    </div>
+    <div class="background before"></div>
+    <div class="background after"></div>
+    <div class="next" onclick="window.location='phase3.html'"></div>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Cold Space</title>
+
+    <% include partial/header.ejs %>
+
+    <script>
+        $(() => {
+            let $orbit = $('.orbit');
+            let timeScale = .001;
+            let distScale = 20;
+            let ratio = .1;
+
+            setInterval(() => {
+                let time = Date.now() * timeScale;
+                let x = Math.cos(time);
+                let y = -Math.sin(time);
+                $orbit.css({
+                    zIndex: Math.sign(y),
+                    transform: `translate(${x * distScale}em, ${y * distScale * ratio}em)`,
+                });
+            });
+        });
+    </script>
+
+    <style>
+        /* Inspired by https://codepen.io/ogab/pen/rjVZQj */
+
+        body {
+            transition: .1s ease-out;
+            background: #000;
+        }
+
+        h1 {
+            text-transform: uppercase;
+            font-family: Kanit, sans-serif;
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 1em;
+            opacity: 1;
+            animation: fade-in-text 6s ease-in-out;
+        }
+
+        .outer-space {
+            animation: fade-in 3s ease-out;
+            background: #111522;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        @keyframes fade-in {
+            from {
+                transform: scale(0);
+                transform-origin: center;
+                opacity: 0;
+            }
+        }
+
+        @keyframes fade-in-text {
+            from {
+                opacity: 0;
+            }
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .orbit {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+        }
+
+        .planet {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -5em;
+            margin-left: -5em;
+            width: 10em;
+            height: 10em;
+            border-radius: 50%;
+            background: #444F77;
+            transition-duration: .2s;
+        }
+
+        .planet:hover {
+            transform: scale(1.1);
+            transition-duration: .5s;
+        }
+
+        .moon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -.5em;
+            margin-left: -.5em;
+            width: 1em;
+            height: 1em;
+            border-radius: 50%;
+            background: #333A66;
+        }
+    </style>
+</head>
+<body class="outer-space">
+    <h2 class="text-warning text-center d-lg-none px-3" style="position: absolute; top:5em; font-size:24px">
+        Intended for desktop browsers
+    </h2>
+    <h1 class="text-center pl-4"><span>Cold</span> <span class="text-primary">Space</span></h1>
+    <div class="planet" onclick="window.location='phase1.html'"></div>
+    <div class="orbit">
+        <div class="moon"></div>
+    </div>
+</body>
+</html>

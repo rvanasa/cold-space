@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Phase IV</title>
+
+    <% include partial/header.ejs %>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/TypewriterJS/1.0.0/typewriter.min.js"
+            integrity="sha256-0GG30XmRuHKTD54lbTLEd01reloWjlnefU09UzmFpzc="
+            crossorigin="anonymous"></script>
+
+    <script>
+        $(() => {
+            let $typewriter = $('.news .typewriter');
+            let text = $typewriter.text();
+            let typewriter = new Typewriter($typewriter[0], {
+                typingSpeed: 8,
+                deleteSpeed: 1,
+            });
+            typewriter
+                .typeString(text)
+                .start();
+
+            $('.writer-details').hide();
+
+            window.clickWriter = () => {
+                window.clickWriter = () => {};
+                $typewriter.hide();
+                $('.writer-details').show();
+                let typewriter = new Typewriter($('.writer-details .typewriter')[0], {
+                    typingSpeed: 30,
+                    deleteSpeed: 100,
+                });
+                typewriter
+                    .deleteAll()
+                    .typeString('Nice to meet you! ')
+                    .pauseFor(500)
+                    .typeString('I\'m Nevin, a father of three. I love reading, writing, and working part-time at NASA')
+                    .pauseFor(200)
+                    .deleteChars(4)
+                    .typeString('UNASA.')
+                    .pauseFor(200)
+                    .typeString(' For story requests, please contact us at the mailing address below.')
+                    .pauseFor(2000)
+                    .typeString(' If you are wondering why we still use the postal service in the 23rd century, that\'s a question for my supervisor.')
+                    .start();
+            };
+        });
+    </script>
+
+    <style>
+        body {
+            font-family: Kanit, sans-serif;
+            overflow: hidden;
+        }
+
+        .title {
+            letter-spacing: 2px;
+            font-weight: 200;
+        }
+
+        /* Shimmering effect from https://codepen.io/kianlavi/pen/BzbRZw */
+
+        .shine {
+            background: rgba(0, 0, 0, 0) linear-gradient(to right, rgba(0, 0, 0, 0) 0%, #111522 20%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 100%) no-repeat;
+            background-size: 800px 104px;
+            display: inline-block;
+            position: relative;
+
+            animation-duration: 3s;
+            animation-fill-mode: both;
+            animation-iteration-count: infinite;
+            animation-name: placeholderShimmer;
+            animation-timing-function: linear;
+        }
+
+        .box {
+            height: 104px;
+            width: 100px;
+        }
+
+        .shine-group {
+            display: inline-flex;
+            flex-direction: column;
+            margin-left: 25px;
+            margin-top: 15px;
+            vertical-align: top;
+        }
+
+        .lines {
+            height: 10px;
+            margin-top: 10px;
+            width: 200px;
+        }
+
+        .photo {
+            display: block !important;
+            width: 325px;
+            height: 100px;
+            margin-top: 15px;
+        }
+
+        @keyframes placeholderShimmer {
+            0% {
+                background-position: -468px 0;
+            }
+
+            100% {
+                background-position: 468px 0;
+            }
+        }
+
+        .btn {
+            transition: .2s ease-out;
+        }
+
+        .btn:hover {
+            padding: 1em;
+            transition-duration: .3s;
+            border: none;
+            background: #444F77;
+            transform: scale(1.25) rotate(3deg);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <div class="box shine"></div>
+                <div class="shine-group">
+                    <div class="lines shine"></div>
+                    <div class="lines shine"></div>
+                    <div class="lines shine"></div>
+                </div>
+                <div class="photo shine"></div>
+                <div class="photo shine"></div>
+                <br>
+                <div class="box shine"></div>
+                <div class="shine-group">
+                    <div class="lines shine"></div>
+                    <div class="lines shine"></div>
+                    <div class="lines shine"></div>
+                </div>
+                <div class="photo shine"></div>
+            </div>
+            <div class="col-8">
+                <div class="card shine">
+                    <div class="card-body">
+                        <h1 class="title">BREAKING NEWS</h1>
+                        <h5 class="text-warning" onclick="clickWriter()">Nevin Clamsey / 2201.07.02</h5>
+                        <br>
+                        <div class="news text-primary">
+                            <div class="typewriter" lang="zh-hans">
+                                <%= require('text/chinese.txt') %>
+                            </div>
+                        </div>
+                        <div class="writer-details text-success">
+                            <div class="typewriter"></div>
+                            <hr>
+                            <div class="btn btn-outline-secondary" onclick="window.location='phase4-unasa.html'">
+                                UNASA Suite 5K39 | Washington, DC | 20546-0001
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

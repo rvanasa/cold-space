@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Story</title>
+
+    <% include partial/header.ejs %>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+          integrity="sha256-GqiEX9BuR1rv5zPU5Vs2qS/NSHl1BJyBcjQYJ6ycwD4="
+          crossorigin="anonymous"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"
+            integrity="sha256-pQBbLkFHcP1cy0C8IhoSdxlm0CtcH5yJ2ki9jjgR03c="
+            crossorigin="anonymous"></script>
+
+    <script>
+        $(() => {
+            AOS.init({
+                duration: 500,
+            });
+        });
+    </script>
+
+    <style>
+        body {
+            font-family: Kanit, sans-serif;
+        }
+
+        h1 {
+            text-transform: uppercase;
+            letter-spacing: .5em;
+        }
+
+        .space {
+            padding-top: 4em;
+            padding-bottom: 40vh;
+        }
+
+        .planet {
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            left: -1em;
+            width: 10em;
+            height: 10em;
+            border-radius: 50%;
+        }
+
+        .star {
+            box-shadow: var(--red) 0 0 8em;
+            left: -1em;
+            width: 20em;
+            height: 20em;
+        }
+
+        .sphere {
+            box-shadow: #f54c25 0 0 3em;
+        }
+
+        .land {
+            box-shadow: var(--green) 0 0 2em;
+        }
+
+        .water {
+            box-shadow: var(--blue) 0 0 2em;
+        }
+
+        .life {
+            box-shadow: var(--white) 0 0 2em;
+        }
+
+        .death {
+            box-shadow: var(--purple) 0 0 2em;
+        }
+
+        .text-adapt {
+            color: #F54195;
+        }
+
+        .adapt {
+            box-shadow: #F54195 0 0 2em;
+        }
+
+        .learn {
+            box-shadow: white 0 0 5em;
+        }
+
+        .explore {
+            box-shadow: var(--success) 0 0 5em;
+        }
+
+        .text-discover {
+            color: #444F77;
+        }
+
+        .discover {
+            box-shadow: #444F77 0 0 5em;
+        }
+
+        .earth {
+            background: #444F77;
+        }
+
+        .share {
+            box-shadow: var(--dark) 0 0 4em;
+        }
+
+        .steal {
+            box-shadow: var(--red) 0 0 5em;
+        }
+
+        .serve {
+            box-shadow: #444F77 0 0 4em inset;
+        }
+
+        .next {
+            transition: .2s ease-out;
+            box-shadow: var(--purple) 0 0 2em inset;
+        }
+
+        .next:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container text-center">
+        <div style="min-height:100vh">
+            <h1 class="text-secondary" style="padding-top:40vh">Space</h1>
+        </div>
+        <div data-aos="zoom-in">
+            <h1 class="text-danger">Star</h1>
+            <div class="space">
+                <div class="planet star"></div>
+            </div>
+        </div>
+        <div data-aos="zoom-in">
+            <h1 class="text-warning">Sphere</h1>
+            <div class="space">
+                <div class="planet sphere"></div>
+            </div>
+        </div>
+        <div data-aos="zoom-in">
+            <h1 class="text-success">Land</h1>
+            <div class="space">
+                <div class="planet land"></div>
+            </div>
+        </div>
+        <div data-aos="zoom-in">
+            <h1 class="text-primary">Water</h1>
+            <div class="space">
+                <div class="planet water"></div>
+            </div>
+        </div>
+        <div data-aos="zoom-in">
+            <h1 class="text-white">Life</h1>
+            <div class="space">
+                <div class="planet life"></div>
+            </div>
+        </div>
+        <div data-aos="zoom-in">
+            <h1 class="text-info">Death</h1>
+            <div class="space">
+                <div class="planet death"></div>
+            </div>
+        </div>
+        <div data-aos="zoom-in">
+            <h1 class="text-adapt">Adapt</h1>
+            <div class="space">
+                <div class="planet adapt"></div>
+            </div>
+        </div>
+        <div data-aos="zoom-in">
+            <h1 class="text-secondary">Learn</h1>
+            <div class="space">
+                <div class="planet learn"></div>
+            </div>
+        </div>
+        <div data-aos="zoom-in">
+            <h1 class="text-success">Explore</h1>
+            <div class="space">
+                <div class="planet explore"></div>
+            </div>
+        </div>
+        <div data-aos="zoom-in">
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col-5">
+                    <h1 class="text-discover">Echo</h1>
+                </div>
+                <div class="col-5">
+                    <h1 class="text-discover">Echo</h1>
+                </div>
+                <div class="col-1"></div>
+            </div>
+            <div class="space">
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col-5">
+                        <div class="planet discover"></div>
+                    </div>
+                    <div class="col-5">
+                        <div class="planet earth"></div>
+                    </div>
+                    <div class="col-1"></div>
+                </div>
+            </div>
+        </div>
+        <div data-aos="zoom-in">
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col-5">
+                    <h1 class="text-dark">Split</h1>
+                </div>
+                <div class="col-5">
+                    <h1 class="text-danger">Steal</h1>
+                </div>
+                <div class="col-1"></div>
+            </div>
+            <div class="space">
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col-5">
+                        <div class="planet share"></div>
+                    </div>
+                    <div class="col-5">
+                        <div class="planet earth steal"></div>
+                    </div>
+                    <div class="col-1"></div>
+                </div>
+            </div>
+        </div>
+        <div data-aos="zoom-in">
+            <h1 class="text-muted">Serve</h1>
+            <div class="space">
+                <div class="row">
+                    <div class="col-3"></div>
+                    <div class="col-3">
+                        <div class="planet serve"></div>
+                    </div>
+                    <div class="col-3">
+                        <div class="planet earth"></div>
+                    </div>
+                    <div class="col-3"></div>
+                </div>
+            </div>
+        </div>
+        <div style="min-height:100vh"></div>
+        <div class="space">
+            <div class="planet next" onclick="window.location='phase8.html'"></div>
+        </div>
+    </div>
+</body>
+</html>

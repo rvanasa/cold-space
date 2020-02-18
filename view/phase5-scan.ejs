@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Scanner</title>
+
+    <% include partial/header.ejs %>
+
+    <script>
+        $(() => {
+            let $orbit = $('.orbit');
+            let timeScale = .0005;
+            let distScale = 30;
+            let ratio = .6;
+
+            setInterval(() => {
+                let time = Date.now() * timeScale;
+                let x = Math.cos(time);
+                let y = -Math.sin(time);
+                $orbit.css({
+                    transform: `translate(${x * distScale}em, ${y * distScale * ratio}em)`,
+                });
+            });
+
+            window.clickPlanet = () => {
+                $('body').append($('<div class="ping">'));
+            };
+        });
+    </script>
+
+    <style>
+        body {
+            background: black;
+            transition: .1s ease-out;
+            overflow: hidden;
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+        }
+
+        .orbit {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+        }
+
+        .planet {
+            z-index: 1;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -3em;
+            margin-left: -3em;
+            width: 6em;
+            height: 6em;
+            border-radius: 50%;
+            background: #444F77;
+            transition-duration: .2s;
+        }
+
+        .planet:hover {
+            transform: scale(1.1);
+            transition-duration: .5s;
+        }
+
+        .other {
+            z-index: 1;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -2.5em;
+            margin-left: -2.5em;
+            width: 5em;
+            height: 5em;
+            border-radius: 50%;
+            background: black;
+        }
+
+        .ping {
+            z-index: -2;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -30em;
+            margin-left: -30em;
+            width: 60em;
+            height: 60em;
+            border-radius: 50%;
+            box-shadow: white 0 0 20px inset;
+            animation: ping 5s linear;
+            transform: scale(0);
+        }
+
+        @keyframes ping {
+            from {
+                transform: scale(.1);
+            }
+            to {
+                transform: scale(3);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="planet" onclick="clickPlanet()"></div>
+    <div class="orbit">
+        <div class="other" onclick="window.location='phase6.html'"></div>
+    </div>
+</body>
+</html>

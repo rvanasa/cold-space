@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>UNAE Space Center</title>
+
+    <% include partial/header.ejs %>
+
+    <script>
+        $(() => {
+            let $orbit = $('.orbit');
+            let timeScale = .001;
+            let distScale = 10;
+            let ratio = .1;
+
+            setInterval(() => {
+                let time = Date.now() * timeScale;
+                let x = Math.cos(time);
+                let y = -Math.sin(time);
+                $orbit.css({
+                    transform: `translate(${x * distScale}em, ${y * distScale * ratio}em)`,
+                });
+            });
+        });
+    </script>
+
+    <style>
+        body {
+            background: #2B2836;
+            background: linear-gradient(90deg, rgba(43, 40, 54, 1) 0%, rgba(0, 0, 0, 1) 50%, rgba(43, 40, 54, 1) 100%);
+            overflow-x: hidden;
+        }
+
+        img {
+            animation: fade-in 1s ease-out;
+            border-radius: 3em 3em 0 0;
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+        }
+
+        .card {
+            background: #111522;
+        }
+
+        .orbit {
+            width: 100%;
+            height: 10em;
+        }
+
+        .moon {
+            position: relative;
+            top: 50%;
+            left: 50%;
+            margin-top: -.5em;
+            margin-left: -.5em;
+            width: 1em;
+            height: 1em;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+
+        .moon:hover {
+            transform: scale(1.5);
+            transition-duration: .5s;
+        }
+
+    </style>
+</head>
+<body>
+    <div style="height:90vh"></div>
+    <div class="container" style="width: 60em">
+        <img src="img/phase4-unasa.jpg" alt="" class="d-block w-100">
+        <div class="card ">
+            <div class="card-body">
+                <pre class="typewriter"><%= require('text/apollo.txt') %></pre>
+                <hr>
+                <div class="orbit">
+                    <div class="moon" onclick="window.location='phase4-clearance.html'"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

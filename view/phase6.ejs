@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Phase VI</title>
+
+    <% include partial/header.ejs %>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/TypewriterJS/1.0.0/typewriter.min.js"
+            integrity="sha256-0GG30XmRuHKTD54lbTLEd01reloWjlnefU09UzmFpzc="
+            crossorigin="anonymous"></script>
+
+    <script>
+        $(() => {
+            let typewriter = new Typewriter($('.typewriter')[0], {
+                typingSpeed: 40,
+                deleteSpeed: 20,
+                loop: true,
+            });
+            typewriter
+                .typeString('they came from a place')
+                .pauseFor(150)
+                .deleteAll()
+                .typeString('that we cannot find')
+                .pauseFor(150)
+                .deleteAll()
+                .typeString('where life is an echo.')
+                .pauseFor(150)
+                .deleteAll()
+                .start();
+        });
+    </script>
+
+    <style>
+        body {
+            background: black;
+            background: linear-gradient(90deg, rgba(200, 40, 54, 1) 0%, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 1) 80%, rgba(200, 40, 54, 1) 100%);
+        }
+
+        img {
+            animation: fade-in 1s ease-out;
+            opacity: .8;
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+        }
+
+        .terminal {
+            padding: 1em;
+            font-size: 4em;
+        }
+
+        p, code {
+            cursor: default;
+        }
+
+        .scroll-fade {
+            height: 100vh;
+            background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+        }
+
+        .next {
+            height: 100vh;
+            background: black;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container text-center">
+        <div class="terminal">
+            <div class="typewriter text-danger"></div>
+        </div>
+        <img src="img/phase6.jpg" alt="" class="d-block w-100">
+        <span class="text-warning"><%= require('text/chinese.txt') %></span>
+        <code><%= require('text/apollo.txt') %></code>
+    </div>
+    <div class="scroll-fade"></div>
+    <div class="next" onclick="window.location='phase7.html'"></div>
+</body>
+</html>

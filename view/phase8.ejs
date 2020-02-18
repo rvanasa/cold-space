@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Phase VIII</title>
+
+    <% include partial/header.ejs %>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/TypewriterJS/1.0.0/typewriter.min.js"
+            integrity="sha256-0GG30XmRuHKTD54lbTLEd01reloWjlnefU09UzmFpzc="
+            crossorigin="anonymous"></script>
+
+    <script>
+        $(() => {
+            let typewriter = new Typewriter($('.typewriter')[0], {
+                deleteSpeed: 40,
+            });
+            typewriter
+                .typeString('Perhaps now you understand.')
+                .pauseFor(500)
+                .deleteAll()
+                .typeString('We have no concept of violence.')
+                .pauseFor(500)
+                .deleteAll()
+                .typeString('What would we gain?')
+                .pauseFor(1000)
+                .changeDeleteSpeed(200)
+                .deleteChars(5)
+                .pauseFor(200)
+                .typeString('lose?')
+                .pauseFor(2000)
+                .changeDeleteSpeed(5)
+                .deleteAll()
+                .typeString('...')
+                .start();
+        });
+    </script>
+
+    <style>
+        body {
+            overflow: hidden;
+        }
+
+        .background {
+            background: url("img/phase8.jpg");
+            background-size: cover;
+            animation: fade-in 10s ease-in-out;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+        }
+
+        .terminal {
+            position: absolute;
+            top: 2em;
+            right: 4em;
+            padding: 1em;
+            background: rgba(0, 0, 0, .2);
+        }
+
+        .next {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 10em;
+            height: 5em;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="terminal">
+        <div class="typewriter"></div>
+    </div>
+    <div class="next" onclick="window.location='phase9.html'"></div>
+</body>
+</html>

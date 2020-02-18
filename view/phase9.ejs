@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Phase IX</title>
+
+    <% include partial/header.ejs %>
+
+    <style>
+        body {
+            background-color: #221511;
+        }
+
+        .cover {
+            border-radius: 0 0 3em 3em;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+        }
+
+        .parallax {
+            z-index: 10;
+            background-repeat: no-repeat;
+            background-position: 50% 0;
+            background-attachment: fixed;
+            background-size: cover;
+            color: white;
+            height: 100vh;
+            animation: fade-in 1s ease-out;
+            /*noinspection SpellCheckingInspection*/
+            transform: translatez(0);
+        }
+
+        .channel {
+            position: relative;
+            left: -1em;
+            height: 100%;
+            width: 32em;
+            background-color: rgba(0, 0, 0, .2);
+        }
+
+        h2 {
+            /*z-index: -2;*/
+            position: fixed;
+            top: 40vh;
+            left: 0;
+            right: 0;
+            letter-spacing: .5em;
+            animation: fade-in 2s ease-out;
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+        }
+
+        p {
+            font-family: "Kanit", sans-serif;
+            font-size: 16px;
+            font-weight: 200;
+        }
+
+    </style>
+</head>
+<body>
+    <!--    <div class="parallax" style="background-image:url('img/phase9.jpg'); background-position:bottom"></div>-->
+    <div class="bg-white cover" style="height:50vh"></div>
+    <div class="parallax" style="height: 150vh; background-image:url('img/phase2-after.jpg')"></div>
+    <div class="parallax" style="background-image:url('img/phase9-cloud.jpg'); background-position:bottom">
+        <div class="channel mx-auto"></div>
+    </div>
+    <div class="parallax" style="background-image:url('img/phase9-peak.jpg'); background-position:top">
+        <div class="channel mx-auto"></div>
+    </div>
+    <div class="parallax" onclick="window.location='phase10.html'"></div>
+    <h2 class="text-center">time flies</h2>
+</body>
+</html>
