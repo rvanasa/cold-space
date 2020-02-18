@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Phase X</title>
+
+    <!-- Character encoding -->
+<meta charset="UTF-8">
+
+<!-- Mobile friendly -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Prevent translation for special characters -->
+<meta name="google" content="notranslate">
+
+<!-- Custom favicon -->
+<link rel="icon" type="image/png" href="../img/favicon.png"/>
+
+<!--<link rel="stylesheet" href="style/main.css">-->
+
+<!-- Bootstrap CSS framework (https://getbootstrap.com/) -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+<!-- Bootstrap theme from Bootswatch (https://bootswatch.com/) -->
+<!--suppress JSUnresolvedLibraryURL -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/cyborg/bootstrap.min.css">
+
+<!-- Custom fonts -->
+<link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Kanit:100&display=swap" rel="stylesheet">
+
+<link href="bundle/main.css" rel="stylesheet">
+<script src="bundle/main.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/TypewriterJS/1.0.0/typewriter.min.js"
+            integrity="sha256-0GG30XmRuHKTD54lbTLEd01reloWjlnefU09UzmFpzc="
+            crossorigin="anonymous"></script>
+
+    <script>
+        $(() => {
+            let typewriter = new Typewriter($('.typewriter')[0], {
+                typingSpeed: 40,
+                deleteSpeed: 1,
+            });
+            typewriter
+                .typeString('It was our nature to work together.')
+                .pauseFor(500)
+                .typeString(' Our planet was too dangerous for life to exist without full cooperation,')
+                .pauseFor(200)
+                .typeString(' and as a result,')
+                .pauseFor(200)
+                .typeString(' the strength of our society far surpassed that of the Earth.')
+                .pauseFor(500)
+                .typeString(' But this precisely led to our downfall.')
+                .pauseFor(2000)
+                .deleteAll()
+                .typeString(' They brought trees and grass,')
+                .pauseFor(500)
+                .typeString(' towns and cities,')
+                .pauseFor(500)
+                .typeString(' and, although they tried, they failed to prevent each other from slowly destroying our world.')
+                .pauseFor(2000)
+                .deleteAll()
+                .typeString('They watch us from a place that we cannot find,')
+                .pauseFor(500)
+                .typeString(' where life is nothing but an echo in the cold expanse of space.')
+                .pauseFor(1000)
+                .deleteAll()
+                .typeString('We all knew this would be inevitable.')
+                .pauseFor(1000)
+                .start();
+
+            setTimeout(() => {
+                $('.background').css({opacity: 0});
+            }, 1000 * 40);
+
+            setTimeout(() => {
+                window.location = '.';
+            }, 1000 * 50);
+        });
+    </script>
+
+    <style>
+
+        .background {
+            background-image: url("img/phase10.jpg");
+            background-size: cover;
+            background-position: 50% 85%;
+            animation: fade-in 15s ease, pan 60s ease, fade-in 15s 35s ease-in reverse;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .terminal {
+            z-index: 1;
+            position: absolute;
+            top: 2em;
+            left: 4em;
+            width: 35em;
+            padding: 1em;
+            background: rgba(0, 0, 0, .7);
+        }
+
+        .next {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 15%;
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes pan {
+            from {
+                background-position: 50% 10%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="terminal">
+        <div class="typewriter"></div>
+    </div>
+    <div class="background"></div>
+    <div class="next" onclick="window.location='phase3.html'"></div>
+</body>
+</html>
