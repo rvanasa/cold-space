@@ -47,7 +47,7 @@
     <!-- Preload images -->
 <script>
 window.PRELOAD = ['favicon.png','phase1.jpg','phase10.jpg','phase2-after.jpg','phase2-before.jpg','phase4-unasa.jpg','phase5.jpg','phase6.jpg','phase8.jpg','phase9-cloud.jpg','phase9-peak.jpg',];
-PRELOAD.forEach(img => new Image().src = 'img/' + img);
+PRELOAD.forEach((img, i) => setTimeout(() => new Image().src = 'img/' + img), i * 10);
 </script>
 
 
