@@ -3,5 +3,5 @@
 window.PRELOAD = [<% fs.readdirSync('www/public/img').forEach(file => {
 %>'<%- file %>',<%
 }) %>];
-PRELOAD.forEach(img => new Image().src = 'img/' + img);
+PRELOAD.forEach((img, i) => setTimeout(() => new Image().src = 'img/' + img), i * 10);
 </script>
